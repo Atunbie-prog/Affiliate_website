@@ -9,7 +9,6 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
     background: #ffffff;
     color: #1e293b;
-
 }
 
 .container {
@@ -86,6 +85,10 @@ body {
     box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
 }
 
+.cta-primary:active {
+    transform: translateY(-1px);
+}
+
 .cta-secondary {
     display: inline-block;
     background: rgba(255, 255, 255, 0.1);
@@ -102,6 +105,10 @@ body {
 .cta-secondary:hover {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cta-secondary:active {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .hero-image {
@@ -185,9 +192,11 @@ body {
     font-size: 120px;
     opacity: 0.6;
 }
+
 .problem-image-placeholder img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 /* How It Works */
@@ -245,11 +254,13 @@ body {
     margin: 0 auto 24px;
     color: white;
 }
+
 .step-icon img {
-    height:100%;
+    height: 100%;
+    width: 100%;
     border-radius: 50%; 
     object-fit: cover;
-    border:none;
+    border: none;
 }
 
 .step-number {
@@ -288,6 +299,13 @@ body {
     max-width: 1100px;
     margin: 0 auto;
 }
+
+.course-store {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 20px 0;
+}
+
 .course-store a {
     display: inline-block;
     background: #f1f5f9;
@@ -298,9 +316,11 @@ body {
     font-weight: 600;
     transition: all 0.3s ease;
 }
+
 .course-store a:active {
     color: red;
 }
+
 .course-store a:hover {
     background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
     color: white;
@@ -323,14 +343,20 @@ body {
 .path-icon {
     font-size: 3rem;
     margin-bottom: 20px;
+    width: 80px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 .path-icon img {
     width: 100%;
-    height:100%; 
+    height: 100%; 
     border-radius: 50%; 
     object-fit: cover;
-    border:none;
+    border: none;
 }
+
 .path-card h3 {
     font-size: 1.5rem;
     margin-bottom: 12px;
@@ -357,6 +383,10 @@ body {
 .path-cta:hover {
     background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
     color: white;
+}
+
+.path-cta:active {
+    transform: scale(0.98);
 }
 
 /* Why It Works */
@@ -560,6 +590,7 @@ body {
     font-weight: 600;
     color: #0f172a;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .faq-question:hover {
@@ -570,6 +601,8 @@ body {
     font-size: 1.2rem;
     transition: transform 0.3s ease;
     color: #6366f1;
+    flex-shrink: 0;
+    margin-left: 16px;
 }
 
 .faq-answer {
@@ -718,6 +751,10 @@ body {
     box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
 }
 
+.submit-btn:active {
+    transform: translateY(0);
+}
+
 .contact-note {
     background: #fef3c7;
     border-left: 4px solid #f59e0b;
@@ -773,32 +810,509 @@ footer {
     color: #64748b;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Tablets and Small Laptops (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 24px;
+    }
+
+    .hero {
+        padding: 100px 20px 80px;
+    }
+
+    .problem-section,
+    .how-it-works,
+    .skill-paths,
+    .why-works,
+    .who-section,
+    .faq,
+    .final-cta,
+    .contact-section {
+        padding: 80px 20px;
+    }
+
+    .trust-section {
+        padding: 60px 20px;
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .paths-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+}
+
+/* Tablets (768px - 991px) */
+@media (max-width: 991px) {
     .problem-content,
     .why-content,
     .who-grid {
         grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .why-content {
+        direction: ltr;
+    }
+
+    .why-image {
+        order: -1;
+        min-height: 300px;
+    }
+
+    .problem-image {
+        min-height: 300px;
+    }
+
+    .trust-stats {
+        gap: 40px;
+    }
+
+    .section-header h2 {
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
+    }
+
+    .contact-intro h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile Landscape and Small Tablets (576px - 767px) */
+@media (max-width: 767px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .hero {
+        padding: 80px 16px 60px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 7vw, 2.5rem);
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 1.05rem;
+        margin-bottom: 32px;
     }
 
     .hero-ctas {
         flex-direction: column;
         align-items: center;
+        gap: 12px;
+        margin-bottom: 40px;
     }
 
     .cta-primary,
     .cta-secondary {
         width: 100%;
-        max-width: 300px;
+        max-width: 320px;
+        padding: 16px 32px;
+        font-size: 1rem;
     }
 
     .trust-stats {
-        gap: 30px;
-        margin-bottom: 25px;
+        gap: 32px;
+        margin-top: 40px;
+        margin-bottom: 20px;
     }
 
-    .steps-grid,
+    .trust-stat-value {
+        font-size: 1.1rem;
+    }
+
+    .trust-stat-label {
+        font-size: 0.85rem;
+    }
+
+    /* Sections */
+    .problem-section,
+    .how-it-works,
+    .skill-paths,
+    .why-works,
+    .who-section,
+    .faq,
+    .final-cta,
+    .contact-section {
+        padding: 60px 16px;
+    }
+
+    .trust-section {
+        padding: 50px 16px;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+        margin-bottom: 12px;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    .problem-text h2 {
+        font-size: 1.75rem;
+        margin-bottom: 20px;
+    }
+
+    .problem-text p {
+        font-size: 1rem;
+        margin-bottom: 14px;
+    }
+
+    .problem-image {
+        min-height: 250px;
+        padding: 30px;
+    }
+
+    /* Steps */
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .step-card {
+        padding: 32px 24px;
+    }
+
+    .step-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .step-card p {
+        font-size: 0.95rem;
+    }
+
+    /* Paths */
     .paths-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .path-card {
+        padding: 32px 24px;
+    }
+
+    .path-card h3 {
+        font-size: 1.35rem;
+    }
+
+    .path-card p {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    /* Why Works */
+    .why-features h2 {
+        font-size: 1.8rem !important;
+        margin-bottom: 24px !important;
+    }
+
+    .feature-item {
+        gap: 12px;
+    }
+
+    .feature-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+    }
+
+    .feature-text h3 {
+        font-size: 1.1rem;
+    }
+
+    .feature-text p {
+        font-size: 0.95rem;
+    }
+
+    .why-image {
+        min-height: 280px;
+        padding: 30px;
+    }
+
+    /* Who Section */
+    .who-card {
+        padding: 32px 24px;
+    }
+
+    .who-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    .who-list li {
+        font-size: 0.95rem;
+        padding: 10px 0 10px 32px;
+    }
+
+    /* Trust Section */
+    .trust-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .trust-content h2 {
+        font-size: 1.65rem;
+        margin-bottom: 16px;
+    }
+
+    .trust-content p {
+        font-size: 1rem;
+    }
+
+    .trust-highlight {
+        padding: 16px;
+        font-size: 0.95rem;
+    }
+
+    /* FAQ */
+    .faq-question {
+        padding: 20px;
+        font-size: 0.95rem;
+    }
+
+    .faq-answer {
+        font-size: 0.9rem;
+    }
+
+    .faq-answer.active {
+        padding: 0 20px 20px;
+    }
+
+    /* Contact */
+    .contact-intro h2 {
+        font-size: 1.8rem;
+    }
+
+    .contact-intro p {
+        font-size: 1rem;
+    }
+
+    .contact-form {
+        padding: 28px 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    .submit-btn {
+        padding: 14px 32px;
+        font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 40px 16px 24px;
+    }
+
+    .footer-disclaimer {
+        padding: 20px;
+        font-size: 0.88rem;
+        margin-bottom: 24px;
+    }
+
+    .footer-links {
+        gap: 16px;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+    }
+
+    .footer-copyright {
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile Portrait (up to 575px) */
+@media (max-width: 575px) {
+    .hero {
+        padding: 60px 12px 50px;
+    }
+
+    .hero h1 {
+        font-size: 1.85rem;
+        line-height: 1.15;
+    }
+
+    .hero p {
+        font-size: 0.98rem;
+    }
+
+    .cta-primary,
+    .cta-secondary {
+        padding: 14px 28px;
+        font-size: 0.95rem;
+    }
+
+    .trust-stats {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .problem-section,
+    .how-it-works,
+    .skill-paths,
+    .why-works,
+    .who-section,
+    .faq,
+    .final-cta,
+    .contact-section {
+        padding: 50px 12px;
+    }
+
+    .trust-section {
+        padding: 40px 12px;
+    }
+
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .step-card,
+    .path-card,
+    .who-card {
+        padding: 28px 20px;
+    }
+
+    .contact-form {
+        padding: 24px 16px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* Very Small Phones (up to 375px) */
+@media (max-width: 375px) {
+    .hero h1 {
+        font-size: 1.65rem;
+    }
+
+    .hero p {
+        font-size: 0.92rem;
+    }
+
+    .cta-primary,
+    .cta-secondary {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .step-icon,
+    .path-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .step-card h3,
+    .path-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .who-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .feature-text h3 {
+        font-size: 1.05rem;
+    }
+}
+
+/* Improve touch targets for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .cta-primary,
+    .cta-secondary,
+    .path-cta,
+    .submit-btn,
+    .faq-question {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .path-cta {
+        padding: 14px 32px;
+    }
+
+    /* Remove hover effects on touch devices */
+    .step-card:hover,
+    .path-card:hover,
+    .faq-item:hover {
+        transform: none;
+    }
+
+    /* Active states for better touch feedback */
+    .cta-primary:active,
+    .cta-secondary:active,
+    .path-cta:active,
+    .submit-btn:active {
+        opacity: 0.8;
+    }
+}
+
+/* Landscape orientation tweaks for mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+    .hero {
+        padding: 50px 16px 40px;
+    }
+
+    .problem-section,
+    .how-it-works,
+    .skill-paths,
+    .why-works,
+    .who-section,
+    .faq,
+    .final-cta,
+    .contact-section {
+        padding: 50px 16px;
+    }
+
+    .trust-stats {
+        flex-direction: row;
+        gap: 24px;
+    }
+}
+
+/* Prevent horizontal scroll on small devices */
+@media (max-width: 767px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .hero::before,
+    .final-cta::before {
+        width: 400px;
+        height: 400px;
     }
 }
